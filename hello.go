@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"math/cmplx"
+	"runtime"
 	"time"
 	"math/rand"
 	"math"
-	"math/cmplx"
-	"runtime"
 )
 
 var i, j int = 1, 2
@@ -21,7 +21,57 @@ const (
 	Small = Big >> 99
 )
 
+type Vertex struct {
+	X int
+	Y int
+}
+
 func main() {
+	basic_practice()
+	pointer_practice()
+	struct_practice()
+	//array_practice()
+	//slice_practice()
+	//range_practice()
+	//map_practice()
+	//pointer_receiver_practice()
+	//interface_practice()
+	//error_practice()
+
+}
+
+func struct_practice() {
+	fmt.Println("------struct-practice--------")
+	fmt.Println(Vertex{X: 2, Y: 1})
+	fmt.Println(Vertex{1, 2})
+	v := Vertex{1, 2}
+	v.X = 3
+	fmt.Println(v)
+	p := &v
+	(*p).X = 4
+	fmt.Println(v)
+	p.Y = 5
+	fmt.Println(v)
+}
+
+func pointer_practice() {
+	fmt.Println("------pointer-practice--------")
+	i := 42
+	fmt.Println(i)
+	p := &i
+	fmt.Println(p)
+	fmt.Println(*p)
+	*p = 21
+	fmt.Println(i)
+	fmt.Println(*p)
+
+	fmt.Printf("%T\n", i)
+	fmt.Printf("%T\n", p)
+	fmt.Printf("%T\n", *p)
+}
+
+func basic_practice() {
+	fmt.Println("------basic-practice--------")
 	fmt.Println("Hello, Go")
 	fmt.Println("The time is", time.Now())
 	fmt.Println("My favorite number is", rand.Intn(100))
@@ -62,7 +112,10 @@ func main() {
 	if_test(0)
 	os()
 	call_defer()
+
 }
+
+func pointer() {}
 
 func call_defer() {
 	for ; i < 10; i++ {
